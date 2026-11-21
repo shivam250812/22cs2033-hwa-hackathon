@@ -56,19 +56,22 @@
       <p>Your cart is empty.</p>
       <a href="product.html" class="btn btn-primary">Continue Shopping</a>
     </div>
-    <div class="cart-items-list" id="cart-items-list"></div>
-    <div class="cart-summary" id="cart-summary">
-      <div class="coupon-box">
-        <input type="text" id="coupon-input" placeholder="Coupon code" aria-label="Coupon code">
-        <button id="coupon-apply">Apply</button>
+    <div class="cart-grid">
+      <div class="cart-items-list" id="cart-items-list"></div>
+      <div class="cart-summary" id="cart-summary">
+        <h3>Order Summary</h3>
+        <div class="coupon-box">
+          <input type="text" id="coupon-input" placeholder="Coupon code" aria-label="Coupon code">
+          <button id="coupon-apply">Apply</button>
+        </div>
+        <p id="coupon-msg" class="coupon-msg"></p>
+        <div><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+        <div><span>Discount</span><span id="cart-discount">$0.00</span></div>
+        <div><span>Shipping</span><span id="cart-shipping">$0.00</span></div>
+        <div class="cart-total-row"><span>Total</span><span id="cart-total">$0.00</span></div>
+        <p class="form-note">Pre-order ships February 2027.</p>
+        <button id="btn-checkout" class="btn btn-primary btn-block">Checkout</button>
       </div>
-      <p id="coupon-msg" class="coupon-msg"></p>
-      <div><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
-      <div><span>Discount</span><span id="cart-discount">$0.00</span></div>
-      <div><span>Shipping</span><span id="cart-shipping">$0.00</span></div>
-      <div class="cart-total-row"><span>Total</span><span id="cart-total">$0.00</span></div>
-      <p class="form-note">Pre-order ships February 2027.</p>
-      <button id="btn-checkout" class="btn btn-primary btn-block">Checkout</button>
     </div>
   </div>
 </section>

@@ -113,19 +113,20 @@ function renderCartPage() {
     const el = document.createElement('div');
     el.className = 'cart-item';
     const metaText = item.meta && item.meta.variant ? escapeHtml(item.meta.variant) : '';
+    const lineTotal = item.price * (item.qty || 1);
     el.innerHTML = `
       <div class="image-placeholder">${escapeHtml(item.id)}</div>
       <div class="info">
         <div class="name">${escapeHtml(item.name)}</div>
         ${metaText ? '<div class="meta">' + metaText + '</div>' : ''}
       </div>
-      <div class="price"><span class="unit-price">${formatMoney(item.price)}</span><span class="line-total">${formatMoney(item.price * (item.qty || 1))}</span></div>
-      <div class="controls">
+      <div class="price-col"><span class="unit-price">${formatMoney(item.price)}</span><span class="line-total">${formatMoney(lineTotal)}</span></div>
+      <div class="qty-row">
         <button class="qty-btn" data-id="${escapeHtml(item.id)}" data-delta="-1">&#8722;</button>
         <span class="qty-val">${item.qty || 1}</span>
         <button class="qty-btn" data-id="${escapeHtml(item.id)}" data-delta="1">&#43;</button>
-        <button class="remove" data-id="${escapeHtml(item.id)}">Remove</button>
       </div>
+      <button class="remove" data-id="${escapeHtml(item.id)}" aria-label="Remove">&#10005;</button>
     `;
     list.appendChild(el);
   });
