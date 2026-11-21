@@ -4,198 +4,431 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SniffScape — An all-day scent hunt for dogs home alone.</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#" class="logo" data-nav="home">SniffScape</a>
-    <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
-    <nav class="nav">
-      <a href="#" data-nav="home">Home</a>
-      <a href="#" data-nav="shop">Shop</a>
-      <a href="#" data-nav="how-it-works">How It Works</a>
-      <a href="#" data-nav="cart" class="nav-cart" aria-label="Cart">Cart <span class="cart-count">0</span></a>
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 2L3.5 7v2.6l5 3.2L12 13.5l3.5-1.9V7L12 2zm0 10.2L7 7.1V7L12 2l5 5.1v0.1L12 12.2z" fill="#2d6a4f"/>
+        <circle cx="12" cy="15.6" r="1.8" fill="#d8a761"/>
+      </svg>
+      SniffScape
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="index.html#how-it-works" class="nav-link">How it works</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="cart.html" class="nav-link nav-cart" aria-label="Cart">Cart <span class="cart-badge">0</span></a>
     </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
   </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-close" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="shop.html" class="nav-link">Shop</a>
+    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <div class="mobile-cart-wrap" style="margin-top:14px;padding-top:14px;border-top:1px solid #e8e5da;">
+      Cart <span class="mobile-cart-count">0</span>
+    </div>
+  </nav>
 </header>
 
+<main>
 <section class="hero">
-  <div class="container hero-inner">
-    <div class="hero-text">
-      <span class="status-chip">Pre-order &bull; Ships February 2027</span>
-      <h1>SniffScape</h1>
-      <p class="tagline">"An all-day scent hunt for dogs home alone."</p>
-      <p class="hero-desc">Hexagon-shaped scent pods that open one at a time at random moments during the day, so your dog sniffs and patrols instead of chewing the furniture.</p>
-      <a href="#" data-nav="shop" class="btn btn-primary">Pre-Order Now</a>
-    </div>
-    <div class="hero-visual">
-      <div class="pod pod-visual"></div>
-      <div class="pod pod-visual pod-visual-2"></div>
-      <div class="pod pod-visual pod-visual-3"></div>
+  <div class="container">
+    <span class="status-chip">Pre-order &#8226; Ships February 2027</span>
+    <h1>Eight hours alone. One big Adventure.</h1>
+    <p class="tagline">"An all-day scent hunt for dogs home alone."</p>
+    <p>SniffScape is a set of hexagon-shaped scent pods you place around your home. Each pod opens one at a time at random moments during the day, releasing a faint scent so your dog sniffs and patrols instead of chewing the furniture.</p>
+    <div class="hero-actions">
+      <a href="shop.html" class="btn btn-primary">Pre-order now</a>
+      <a href="#how-it-works" class="btn btn-outline">See how it works</a>
     </div>
   </div>
 </section>
 
 <section class="problem" id="problem">
   <div class="container">
-    <h2>The problem</h2>
+    <div class="section-head">
+      <h2>Why dogs need SniffScape</h2>
+      <p>Boredom is the root of the trouble.</p>
+    </div>
     <div class="problem-grid">
       <div class="problem-card">
-        <p>Dogs left alone for 6&ndash;9 hours get bored &mdash; which leads to barking, chewing furniture, and anxiety.</p>
+        <h3>Boredom builds</h3>
+        <p>Dogs left alone for 6&ndash;9 hours get bored, which leads to barking, chewing furniture, and anxiety.</p>
       </div>
       <div class="problem-card">
-        <p>Snuffle mats are what dogs love most, but makers warn they are <strong>not safe to leave unsupervised</strong> (fabric can be chewed) and dogs empty them in minutes.</p>
+        <h3>Snuffle mats need supervision</h3>
+        <p>Dogs love snuffle mats, but makers warn they are not safe to leave unsupervised &mdash; fabric can be chewed, and dogs empty them in minutes.</p>
       </div>
       <div class="problem-card">
+        <h3>Toys last minutes</h3>
         <p>Automatic treat dispensers drop everything from one spot and most play sessions last about 10 minutes.</p>
-      </div>
-      <div class="problem-card">
-        <p>High-tech dog consoles are expensive and built around buttons and lights, not a dog&rsquo;s nose.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="solution" id="solution">
+<section class="hunt-demo" id="hunt-demo">
   <div class="container">
-    <h2>The solution</h2>
-    <p class="solution-lead">SniffScape is a set of hexagon-shaped &ldquo;scent pads&rdquo; you place around your home.</p>
-    <ul class="feature-list">
-      <li><strong>Chew-proof, food-grade silicone &ldquo;grass&rdquo; top.</strong> No fabric, no small parts, safe for unsupervised use.</li>
-      <li><strong>Sealed chamber inside</strong> holds part of your dog&rsquo;s normal daily kibble.</li>
-      <li><strong>Connects to the SniffScape app via Bluetooth.</strong> During hours you choose (e.g. 9am&ndash;6pm) they open <strong>one at a time at random moments</strong>.</li>
-      <li><strong>When a pod opens</strong> it releases a faint scent (refillable scent wick) so the dog must sniff it out.</li>
-      <li><strong>Never knowing which pod opens next</strong> keeps your dog patrolling and sniffing all day instead of finishing a toy in 10 minutes.</li>
-      <li><strong>Spread pods across rooms and move them weekly</strong> so the hunt stays new.</li>
-      <li><strong>Uses your dog&rsquo;s normal daily food</strong> &mdash; no extra treats, no weight gain.</li>
-      <li><strong>Rechargeable battery</strong>, about 2 weeks per charge, USB-C.</li>
-      <li><strong>Dishwasher-safe (top rack)</strong> when the electronics core is removed.</li>
-    </ul>
-    <div class="specs">
-      <div class="spec"><span class="spec-label">Size</span><span class="spec-value">Works for all dog sizes</span></div>
-      <div class="spec"><span class="spec-label">Pod</span><span class="spec-value">18cm wide, 6cm tall, weighted non-slip base</span></div>
+    <div class="section-head">
+      <h2>See the hunt in action</h2>
+      <p>Pods open one at a time at random moments &mdash; your dog sniffs them out all day.</p>
     </div>
+    <div class="floor-plan" aria-label="Interactive floor plan hunt demo">
+      <div class="floor-label floor-living">Living room</div>
+      <div class="floor-label floor-kitchen">Kitchen</div>
+      <div class="floor-label floor-bedroom">Bedroom</div>
+      <div class="pod" id="pod-1" style="top:34%;left:18%;" data-id="1">A</div>
+      <div class="pod" id="pod-2" style="top:60%;left:52%;" data-id="2">B</div>
+      <div class="pod" id="pod-3" style="top:18%;left:78%;" data-id="3">C</div>
+      <div class="pod" id="pod-4" style="top:42%;left:30%;" data-id="4">D</div>
+      <div class="pod" id="pod-5" style="top:72%;left:70%;" data-id="5">E</div>
+      <div class="pod" id="pod-6" style="top:28%;left:62%;" data-id="6">F</div>
+      <div class="dog" id="hunt-dog" style="top:34%;left:18%;" aria-hidden="true">&#128034;</div>
+      <div class="scent-ripple" id="ripple"></div>
+    </div>
+    <div class="hunt-status" id="hunt-status">Pods found: <span id="found-count">0</span>/6</div>
+    <div class="timetable" id="timetable"></div>
+    <div class="hunt-controls">
+      <button class="btn btn-primary" id="btn-start">Start the hunt</button>
+      <button class="btn btn-outline" id="btn-pause" disabled>Pause</button>
+      <button class="btn btn-outline" id="btn-reset">Reset</button>
+      <button class="btn btn-outline" id="btn-shuffle">Shuffle pods</button>
+    </div>
+    <p class="visually-hidden" id="hunt-live">Hunt announcements</p>
   </div>
 </section>
 
 <section class="how-it-works" id="how-it-works">
   <div class="container">
-    <h2>How it works</h2>
+    <div class="section-head">
+      <h2>How it works</h2>
+      <p>Four simple steps to a calmer dog.</p>
+    </div>
     <div class="steps">
       <div class="step">
-        <div class="step-num">1</div>
+        <div class="step-icon">1</div>
         <h3>Fill</h3>
-        <p>Add today&rsquo;s kibble to the pod (up to 1/2 cup each).</p>
+        <p>Add today&rsquo;s kibble to the pod, up to 1/2 cup each.</p>
       </div>
       <div class="step">
-        <div class="step-num">2</div>
+        <div class="step-icon">2</div>
         <h3>Place</h3>
         <p>Put pods around one room or the whole home.</p>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
+        <div class="step-icon">3</div>
         <h3>Schedule</h3>
-        <p>Set the hunt window in the app.</p>
+        <p>Set the hunt window in the app, for example 9am&ndash;6pm.</p>
       </div>
       <div class="step">
-        <div class="step-num">4</div>
+        <div class="step-icon">4</div>
         <h3>Hunt</h3>
-        <p>Pods open at random times with a scent cue, and your dog sniffs them out all day. You get a notification each time a pod is found.</p>
+        <p>Pods open at random times with a scent cue, and your dog sniffs them out all day.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="shop" id="shop">
+<section class="comparison" id="comparison">
   <div class="container">
-    <h2>Shop</h2>
-    <div class="shop-intro">
-      <p><strong>Status:</strong> Pre-order. Ships February 2027.</p>
+    <div class="section-head">
+      <h2>SniffScape vs the alternatives</h2>
+      <p>Built around a dog&rsquo;s nose, not buttons and screens.</p>
     </div>
-    <div class="products" id="product-list"></div>
+    <div class="compare-wrap">
+      <table>
+        <thead>
+          <tr><th></th><th>SniffScape</th><th>Snuffle mats</th><th>Timed treat dispenser</th><th>Dog game consoles</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Safe unsupervised</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Lasts all day</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+          </tr>
+          <tr>
+            <td>Uses natural sniffing</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+          </tr>
+          <tr>
+            <td>Spread across home</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+          </tr>
+          <tr>
+            <td>Uses daily food</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td>$129&ndash;$189</td>
+            <td>Low</td>
+            <td>$&mdash;$$</td>
+            <td>$$$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
-<section class="cta">
-  <div class="container cta-inner">
-    <h2>Keep your dog happy while you&rsquo;re away.</h2>
-    <a href="#" data-nav="shop" class="btn btn-primary">Pre-Order SniffScape</a>
-    <p class="cta-note">Status: Pre-order &bull; Ships February 2027</p>
+<section class="safety" id="safety">
+  <div class="container">
+    <div class="section-head">
+      <h2>Safe enough to leave alone</h2>
+      <p>Designed for hours of unsupervised use.</p>
+    </div>
+    <div class="safety-grid">
+      <div class="safety-card">
+        <h3>Chew-proof silicone</h3>
+        <p>Food-grade silicone &ldquo;grass&rdquo; top. No fabric, no small parts.</p>
+      </div>
+      <div class="safety-card">
+        <h3>Weighted base</h3>
+        <p>Weighted, non-slip base keeps each pod in place.</p>
+      </div>
+      <div class="safety-card">
+        <h3>Sealed chamber</h3>
+        <p>Kibble stays sealed inside until the pod opens.</p>
+      </div>
+      <div class="safety-card">
+        <h3>Dishwasher-safe</h3>
+        <p>Top-rack safe when the electronics core is removed.</p>
+      </div>
+    </div>
   </div>
 </section>
+
+<section class="explore" id="explore">
+  <div class="container">
+    <h2>Designed around how dogs actually explore</h2>
+    <p>Sniffing is a dog&rsquo;s strongest natural instinct. SniffScape turns your home into a scent hunt that uses your dog&rsquo;s normal daily kibble &mdash; no extra treats, no weight gain &mdash; so the hunt stays fresh all day, every day.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready for a calmer home?</h2>
+    <p>Pre-order SniffScape. Ships February 2027.</p>
+    <a href="shop.html" class="btn btn-primary btn-block">Pre-order now</a>
+    <p class="note">Pre-order &#8226; Ships February 2027</p>
+  </div>
+</section>
+</main>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">SniffScape</div>
+        <a href="index.html" class="logo" style="color:var(--brand);">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 2L3.5 7v2.6l5 3.2L12 13.5l3.5-1.9V7L12 2zm0 10.2L7 7.1V7L12 2l5 5.1v0.1L12 12.2z" fill="#2d6a4f"/>
+            <circle cx="12" cy="15.6" r="1.8" fill="#d8a761"/>
+          </svg>
+          SniffScape
+        </a>
         <p>"An all-day scent hunt for dogs home alone."</p>
-        <p class="status-note">Pre-order &bull; Ships February 2027</p>
+        <span class="footer-status">Pre-order &#8226; Ships February 2027</span>
       </div>
-      <div class="footer-links">
-        <a href="#" data-nav="home">Home</a>
-        <a href="#" data-nav="shop">Shop</a>
-        <a href="#" data-nav="how-it-works">How It Works</a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="newsletter">
+        <form id="newsletter-form">
+          <input type="email" placeholder="Your email" required aria-label="Email address">
+          <button type="submit">Sign up</button>
+        </form>
+        <p id="newsletter-msg" class="newsletter-msg"></p>
       </div>
     </div>
     <p class="footer-copy">&copy; 2026 SniffScape. Pre-order only. Ships February 2027.</p>
   </div>
 </footer>
 
-<!-- Cart drawer -->
-<div class="cart-drawer" id="cart-drawer" aria-hidden="true">
-  <div class="cart-drawer-inner">
-    <div class="cart-header">
-      <h3>Your Cart</h3>
-      <button class="cart-close" aria-label="Close cart">&times;</button>
-    </div>
-    <div class="cart-items" id="cart-items"></div>
-    <div class="cart-footer">
-      <div class="cart-coupon">
-        <input type="text" id="coupon-input" placeholder="Coupon code">
-        <button id="coupon-apply">Apply</button>
-        <span id="coupon-msg" class="coupon-msg"></span>
-      </div>
-      <div class="cart-summary">
-        <div><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
-        <div><span>Shipping</span><span id="sum-shipping">$0.00</span></div>
-        <div class="cart-total"><span>Total</span><span id="sum-total">$0.00</span></div>
-      </div>
-      <button id="checkout-btn" class="btn btn-primary">Checkout</button>
-      <p id="empty-cart-msg" class="empty-msg">Your cart is empty.</p>
-    </div>
-  </div>
-</div>
+<script src="js/main.js"></script>
+<script>
+const pods = [];
+const statusEl = document.getElementById('hunt-status');
+const foundEl = document.getElementById('found-count');
+const timetableEl = document.getElementById('timetable');
+const liveEl = document.getElementById('hunt-live');
+const dog = document.getElementById('hunt-dog');
+const ripple = document.getElementById('ripple');
+const btnStart = document.getElementById('btn-start');
+const btnPause = document.getElementById('btn-pause');
+const btnReset = document.getElementById('btn-reset');
+const btnShuffle = document.getElementById('btn-shuffle');
 
-<!-- Checkout modal -->
-<div class="modal" id="checkout-modal" aria-hidden="true">
-  <div class="modal-inner">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <h3>Place Order</h3>
-    <form id="checkout-form">
-      <div class="form-row">
-        <label>Name</label>
-        <input type="text" name="name" required>
-      </div>
-      <div class="form-row">
-        <label>Email</label>
-        <input type="email" name="email" required>
-      </div>
-      <div class="form-row">
-        <label>Shipping Address</label>
-        <input type="text" name="address" required>
-      </div>
-      <div class="form-row">
-        <label>Coupon Code</label>
-        <input type="text" name="coupon" placeholder="e.g. SNIFF10">
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Place Order</button>
-      <p id="order-msg"></p>
-    </form>
-  </div>
-</div>
+let timer = null;
+let paused = false;
+let found = 0;
+let openPod = null;
+let positions = [];
 
-<script src="js/app.js"></script>
+function announce(text) { liveEl.textContent = text; }
+
+function initHunt() {
+  document.querySelectorAll('.pod').forEach(el => {
+    const t = parseFloat(el.style.top);
+    const l = parseFloat(el.style.left);
+    positions.push({ id: el.dataset.id, top: t, left: l });
+    el.classList.remove('opens', 'found');
+    el.style.transition = 'top 0.6s ease, left 0.6s ease';
+    el.addEventListener('click', () => {
+      if (openPod === el.dataset.id && !el.classList.contains('found')) findPod(el);
+    });
+  });
+  found = 0;
+  updateFound();
+}
+
+function updateFound() {
+  foundEl.textContent = found;
+  statusEl.textContent = found === 6 ? 'Hunt complete! All pods found.' : 'Pods found: ' + found + '/6';
+  if (found === 6) announce('All six pods have been found. Great hunt!');
+}
+
+function timeString() {
+  const now = new Date();
+  return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function logTime(text) {
+  timetableEl.textContent = timeString() + ' &#8226; ' + text;
+}
+
+function showRipple(x, y) {
+  ripple.style.left = x + 'px';
+  ripple.style.top = y + 'px';
+  ripple.style.display = 'block';
+  ripple.offsetHeight;
+  ripple.style.animation = 'none';
+  ripple.offsetHeight;
+  ripple.style.animation = '';
+  setTimeout(() => { ripple.style.display = 'none'; }, 1200);
+}
+
+function moveDog(toEl) {
+  const rect = toEl.getBoundingClientRect();
+  const plan = document.querySelector('.floor-plan');
+  const pRect = plan.getBoundingClientRect();
+  dog.style.top = (rect.top - pRect.top + rect.height/2 - 13) + 'px';
+  dog.style.left = (rect.left - pRect.left + rect.width/2 - 13) + 'px';
+}
+
+function findPod(el) {
+  el.classList.add('found');
+  el.classList.remove('opens');
+  openPod = null;
+  found += 1;
+  updateFound();
+  const rect = el.getBoundingClientRect();
+  showRipple(rect.left + rect.width/2, rect.top + rect.height/2);
+  announce('Pod ' + el.dataset.id + ' found at ' + timeString());
+  logTime('Dog found pod ' + el.dataset.id);
+}
+
+function openRandom() {
+  if (paused || found === 6) return;
+  const unfound = document.querySelectorAll('.pod:not(.found)');
+  if (unfound.length === 0) return;
+  const pick = unfound[Math.floor(Math.random() * unfound.length)];
+  pick.classList.add('opens');
+  openPod = pick.dataset.id;
+  logTime('Pod ' + openPod + ' opened sniff it out');
+  announce('Pod ' + openPod + ' has opened');
+  setTimeout(() => { pick.classList.remove('opens'); openPod = null; }, 3000);
+}
+
+function shuffle() {
+  const podEls = document.querySelectorAll('.pod');
+  const used = [];
+  podEls.forEach(el => {
+    let pos;
+    do {
+      pos = { top: 12 + Math.floor(Math.random() * 78), left: 10 + Math.floor(Math.random() * 82) };
+    } while (used.some(u => Math.abs(u.top - pos.top) < 14 && Math.abs(u.left - pos.left) < 14));
+    used.push(pos);
+    el.style.top = pos.top + '%';
+    el.style.left = pos.left + '%';
+  });
+  positions = used.map((u, i) => ({ id: i + 1, top: u.top, left: u.left }));
+  announce('Pods moved to new hiding spots');
+}
+
+function start() {
+  if (timer) return;
+  paused = false;
+  btnStart.disabled = true;
+  btnPause.disabled = false;
+  announce('Hunt started');
+  logTime('Hunt began');
+  timer = setInterval(() => {
+    if (!paused) openRandom();
+  }, 2500);
+}
+
+function pause() {
+  paused = !paused;
+  btnPause.textContent = paused ? 'Resume' : 'Pause';
+  announce(paused ? 'Hunt paused' : 'Hunt resumed');
+}
+
+function reset() {
+  clearInterval(timer);
+  timer = null;
+  paused = false;
+  found = 0;
+  btnStart.disabled = false;
+  btnPause.disabled = true;
+  btnPause.textContent = 'Pause';
+  document.querySelectorAll('.pod').forEach(el => {
+    el.classList.remove('opens', 'found');
+  });
+  timetableEl.textContent = '';
+  updateFound();
+  announce('Hunt reset');
+}
+
+btnStart.addEventListener('click', start);
+btnPause.addEventListener('click', pause);
+btnReset.addEventListener('click', reset);
+btnShuffle.addEventListener('click', shuffle);
+
+document.addEventListener('DOMContentLoaded', initHunt);
+</script>
 </body>
 </html>
