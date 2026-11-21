@@ -112,13 +112,14 @@ function renderCartPage() {
   cart.forEach(item => {
     const el = document.createElement('div');
     el.className = 'cart-item';
+    const metaText = item.meta && item.meta.variant ? escapeHtml(item.meta.variant) : '';
     el.innerHTML = `
       <div class="image-placeholder">${escapeHtml(item.id)}</div>
       <div class="info">
         <div class="name">${escapeHtml(item.name)}</div>
-        <div class="meta">${escapeHtml(item.subtitle || '')}</div>
+        ${metaText ? '<div class="meta">' + metaText + '</div>' : ''}
       </div>
-      <div class="price">${formatMoney(item.price * (item.qty || 1))}</div>
+      <div class="price"><span class="unit-price">${formatMoney(item.price)}</span><span class="line-total">${formatMoney(item.price * (item.qty || 1))}</span></div>
       <div class="controls">
         <button class="qty-btn" data-id="${escapeHtml(item.id)}" data-delta="-1">&#8722;</button>
         <span class="qty-val">${item.qty || 1}</span>
@@ -128,6 +129,12 @@ function renderCartPage() {
     `;
     list.appendChild(el);
   });
+
+  const btnCheckout = document.getElementById('btn-checkout');
+  if (btnCheckout) {
+    btnCheckout.disabled = cart.length === 0;
+    btnCheckout.onclick = () => { if (cart.length) { location.href = 'cart.html'; } };
+  }
 
   list.querySelectorAll('.qty-btn').forEach(btn => {
     btn.addEventListener('click', () => changeQty(btn.dataset.id, parseInt(btn.dataset.delta, 10)));
@@ -204,10 +211,10 @@ function initShared() {
 
 // Expose cart helpers for page-specific scripts
 window.sniffCart = {
-  add(id, name, price, qty = 1) {
+  add(id, name, price, qty = 1, meta = {}) {
     const existing = cart.find((i) => i.id === id);
     if (existing) existing.qty = (existing.qty || 1) + qty;
-    else cart.push({ id, name, price, qty });
+    else cart.push({ id, name, price, qty, meta: meta || {} });
     saveCart();
     return cart;
   },

@@ -329,15 +329,15 @@
     setTimeout(()=>{ els.toast.classList.remove('show'); }, 2000);
   }
 
-  // Add to cart
+    // Add to cart
   els.addBtn.addEventListener('click', ()=>{
     const v = variants[state.variant];
     // add kit
-    window.sniffCart.add(v.id, v.name + ' (' + v.subtitle + ')', v.price, state.qty);
+    window.sniffCart.add(v.id, v.name, v.price, state.qty, { variant: v.subtitle });
     // add expansion
-    if(state.expansion){ window.sniffCart.add('expansion', 'Expansion Pack (3 pods)', 59, 1); }
+    if(state.expansion){ window.sniffCart.add('expansion', 'Expansion Pack', 59, 1, { variant: '3 pods' }); }
     // add scent
-    if(state.scent){ window.sniffCart.add('scent-refill', 'Scent Refill Pack &#8212; ' + state.scentName + ' (3 wicks)', 14, 1); }
+    if(state.scent){ window.sniffCart.add('scent-refill', 'Scent Refill Pack', 14, 1, { variant: state.scentName + ' (3 wicks)' }); }
     // update header badge count
     document.querySelectorAll('.cart-badge').forEach(el=>{ el.textContent = window.sniffCart.count(); });
     document.querySelectorAll('.mobile-cart-count').forEach(el=>{ el.textContent = window.sniffCart.count(); });

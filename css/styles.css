@@ -183,7 +183,9 @@ td .no { color: var(--muted); }
 .cart-item .info { flex: 1; }
 .cart-item .name { font-weight: 700; font-size: 0.98rem; }
 .cart-item .meta { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
-.cart-item .price { font-weight: 800; font-size: 1rem; white-space: nowrap; }
+.cart-item .price { font-weight: 800; font-size: 1rem; white-space: nowrap; text-align: right; }
+.cart-item .line-total { display: block; font-size: 0.85rem; font-weight: 700; color: var(--brand); margin-top: 2px; }
+.cart-item .unit-price { color: var(--muted); font-weight: 600; }
 .cart-item .controls { display: flex; align-items: center; gap: 8px; }
 .cart-item .qty-btn { width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; font-weight: 700; color: var(--brand); }
 .cart-item .qty-btn:hover { background: var(--line); }
