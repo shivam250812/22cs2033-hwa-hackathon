@@ -54,6 +54,8 @@ function changeQty(id, delta) {
   item.qty = Math.max(0, (item.qty || 1) + delta);
   if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
   saveCart();
+  // Trigger re-render if on cart page
+  if (typeof window.renderCartPage === 'function') window.renderCartPage();
 }
 function getSubtotal() { return cart.reduce((s, i) => s + i.price * (i.qty || 1), 0); }
 function getShipping(s) { return s >= 100 ? 0 : 6.99; }
@@ -233,6 +235,9 @@ window.sniffCart = {
   },
   clearCoupon() {
     clearCoupon();
+  },
+  renderCartPage() {
+    renderCartPage();
   },
 };
 
