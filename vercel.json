@@ -4,9 +4,6 @@
     { "src": "api/order.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/order", "methods": ["POST", "OPTIONS"], "dest": "/api/order.js" },
-    { "src": "/css/(.*)", "dest": "/css/$1" },
-    { "src": "/js/(.*)", "dest": "/js/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/api/order", "methods": ["POST", "OPTIONS"], "dest": "/api/order.js" }
   ]
 }
