@@ -27,6 +27,9 @@ function loadCart() {
     if (c) { appliedCoupon = c; couponValid = (c === 'SNIFF10'); }
   } catch (e) { appliedCoupon = null; couponValid = null; }
 }
+// Load immediately so cart is ready for inline scripts
+loadCart();
+updateBadge();
 function saveCart() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch (e) {}
   updateBadge();
