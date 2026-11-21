@@ -202,4 +202,27 @@ function initShared() {
   }
 }
 
+// Expose cart helpers for page-specific scripts
+window.sniffCart = {
+  add(id, name, price, qty = 1) {
+    const existing = cart.find((i) => i.id === id);
+    if (existing) existing.qty = (existing.qty || 1) + qty;
+    else cart.push({ id, name, price, qty });
+    saveCart();
+    return cart;
+  },
+  get() {
+    return cart;
+  },
+  count() {
+    return cart.reduce((s, i) => s + (i.qty || 1), 0);
+  },
+  applyCoupon(code) {
+    applyCoupon(code);
+  },
+  clearCoupon() {
+    clearCoupon();
+  },
+};
+
 document.addEventListener('DOMContentLoaded', initShared);

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starter Kit — SniffScape scent pods</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 2L3.5 7v2.6l5 3.2L12 13.5l3.5-1.9V7L12 2zm0 10.2L7 7.1V7L12 2l5 5.1v0.1L12 12.2z" fill="#2d6a4f"/>
+        <circle cx="12" cy="15.6" r="1.8" fill="#d8a761"/>
+      </svg>
+      SniffScape
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="product.html" class="nav-link">Shop</a>
+      <a href="index.html#how-it-works" class="nav-link">How it works</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="cart.html" class="nav-link nav-cart" aria-label="Cart">Cart <span class="cart-badge">0</span></a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-close" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="product.html" class="nav-link">Shop</a>
+    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <div class="mobile-cart-wrap" style="margin-top:14px;padding-top:14px;border-top:1px solid #e8e5da;">
+      Cart <span class="mobile-cart-count">0</span>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="product">
+  <div class="container">
+    <div class="product">
+      <div class="product-gallery">
+        <div class="product-main" aria-label="Main product image">
+          <img id="main-img" src="" alt="SniffScape Starter Kit scent pod">
+          <div class="placeholder-shown image-placeholder" style="width:100%;height:100%;">main-image</div>
+          <button class="gallery-arrow prev" aria-label="Previous image">&#10094;</button>
+          <button class="gallery-arrow next" aria-label="Next image">&#10095;</button>
+        </div>
+        <div class="product-thumbs" aria-label="Thumbnail gallery">
+          <button class="product-thumb active" data-src="" data-alt="SniffScape Starter Kit scent pod" aria-label="Image 1, selected" aria-pressed="true">
+            <span class="placeholder-shown">thumb-1</span>
+          </button>
+          <button class="product-thumb" data-src="" data-alt="SniffScape scent pod top view" aria-label="Image 2" aria-pressed="false">
+            <span class="placeholder-shown">thumb-2</span>
+          </button>
+          <button class="product-thumb" data-src="" data-alt="SniffScape pod in use" aria-label="Image 3" aria-pressed="false">
+            <span class="placeholder-shown">thumb-3</span>
+          </button>
+          <button class="product-thumb" data-src="" data-alt="SniffScape six pods" aria-label="Image 4" aria-pressed="false">
+            <span class="placeholder-shown">thumb-4</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="product-details">
+        <div class="product-badge">Pre-order &#8226; Ships February 2027</div>
+        <h1 id="prod-title">Starter Kit</h1>
+        <p class="product-short" id="prod-short">Six hexagon scent pods for one room. Safe for unsupervised use.</p>
+        <div class="product-price" id="prod-price">$<span id="price-whole">129</span><span class="unit"> / kit</span></div>
+
+        <div class="variant-group">
+          <label>Choose kit</label>
+          <div class="variant-options" id="variant-options">
+            <label class="has-border">
+              <input type="radio" name="variant" value="starter" checked>
+              <span><span class="v-name">Starter</span><span class="v-price">6 pods &#8226; $129</span></span>
+            </label>
+            <label>
+              <input type="radio" name="variant" value="explorer">
+              <span><span class="v-name">Explorer</span><span class="v-price">10 pods &#8226; $189</span></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="addon-group">
+          <label>Add-ons</label>
+          <div class="addon-row">
+            <input type="checkbox" id="add-expansion" value="expansion">
+            <label for="add-expansion">Expansion pack (3 pods)</label>
+            <span class="addon-price">+$59</span>
+          </div>
+          <div class="addon-row">
+            <input type="checkbox" id="add-scent" value="scent">
+            <label for="add-scent">Scent refill pack (3 wicks, ~3 months)</label>
+            <select id="scent-select" class="scent-dropdown" disabled>
+              <option value="citrus">Citrus Meadow</option>
+              <option value="chicken">Roast Chicken</option>
+              <option value="peanut">Peanut Butter</option>
+            </select>
+            <span class="addon-price">+$14</span>
+          </div>
+        </div>
+
+        <div class="qty-group">
+          <label>Quantity</label>
+          <div class="qty-row">
+            <label for="prod-qty">Qty</label>
+            <button class="qty-btn" id="qty-minus">&#8722;</button>
+            <span class="qty-val" id="prod-qty-val">1</span>
+            <button class="qty-btn" id="qty-plus">&#43;</button>
+            <span class="form-note" style="margin-left:10px;">min 1, max 10</span>
+          </div>
+        </div>
+
+        <div class="product-actions">
+          <button class="btn btn-primary add-to-cart" id="btn-add-to-cart">Add to cart</button>
+        </div>
+        <p id="prod-stock" class="form-note" style="margin-top:6px;">In stock. Ships February 2027.</p>
+      </div>
+    </div>
+
+    <div class="product-tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="features">Features</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="box">What's in the box</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="specs">Specs</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="shipping">Shipping &amp; return</button>
+      </div>
+      <div class="tab-panel active" id="tab-features" role="tabpanel">
+        <h3>Features</h3>
+        <ul>
+          <li>Chew-proof, food-grade silicone &ldquo;grass&rdquo; top &mdash; no fabric, no small parts, safe for unsupervised use.</li>
+          <li>Sealed chamber holds part of your dog&rsquo;s normal daily kibble.</li>
+          <li>Pods connect to the SniffScape app via Bluetooth and open one at a time at random moments during your hunt window.</li>
+          <li>Each pod releases a faint scent from a refillable wick so your dog must sniff it out.</li>
+          <li>Random timing keeps your dog patrolling and sniffing all day instead of finishing a toy in 10 minutes.</li>
+          <li>Spread pods across rooms and move them weekly to keep the hunt new.</li>
+          <li>Uses your dog&rsquo;s normal daily food &mdash; no extra treats, no weight gain.</li>
+          <li>Rechargeable battery, about two weeks per charge, USB-C.</li>
+        </ul>
+      </div>
+      <div class="tab-panel" id="tab-box" role="tabpanel">
+        <h3>What&rsquo;s in the box</h3>
+        <ul>
+          <li>6 hexagon scent pods (Starter Kit) or 10 pods (Explorer Kit).</li>
+          <li>Refillable scent wick in each pod.</li>
+          <li>USB-C charging cable.</li>
+          <li>Quick-start guide and app setup instructions.</li>
+        </ul>
+        <p class="form-note">Scent refill packs and expansion packs sold separately.</p>
+      </div>
+      <div class="tab-panel" id="tab-specs" role="tabpanel">
+        <h3>Specs</h3>
+        <ul>
+          <li>Works for all dog sizes.</li>
+          <li>Pod: 18cm wide, 6cm tall, weighted non-slip base.</li>
+          <li>Capacity: up to 1/2 cup of kibble per pod.</li>
+          <li>Battery: about two weeks per charge, USB-C rechargeable.</li>
+          <li>Dishwasher-safe (top rack) when the electronics core is removed.</li>
+          <li>Connects to the SniffScape app via Bluetooth.</li>
+        </ul>
+      </div>
+      <div class="tab-panel" id="tab-shipping" role="tabpanel">
+        <h3>Shipping &amp; return</h3>
+        <ul>
+          <li><strong>Shipping:</strong> Free on orders of $100 or more, otherwise $6.99 flat.</li>
+          <li><strong>Returns:</strong> 30-day return policy on unused, unopened kits.</li>
+          <li><strong>Warranty:</strong> 1-year limited warranty on electronics.</li>
+          <li><strong>Ships:</strong> February 2027 (pre-order).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--brand);">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 2L3.5 7v2.6l5 3.2L12 13.5l3.5-1.9V7L12 2zm0 10.2L7 7.1V7L12 2l5 5.1v0.1L12 12.2z" fill="#2d6a4f"/>
+            <circle cx="12" cy="15.6" r="1.8" fill="#d8a761"/>
+          </svg>
+          SniffScape
+        </a>
+        <p>"An all-day scent hunt for dogs home alone."</p>
+        <span class="footer-status">Pre-order &#8226; Ships February 2027</span>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="product.html">Shop</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="newsletter">
+        <form id="newsletter-form">
+          <input type="email" placeholder="Your email" required aria-label="Email address">
+          <button type="submit">Sign up</button>
+        </form>
+        <p id="newsletter-msg" class="newsletter-msg"></p>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; 2026 SniffScape. Pre-order only. Ships February 2027.</p>
+  </div>
+</footer>
+
+<div class="toast" id="add-toast" role="status" aria-live="polite">
+  <span class="toast-msg">Added to cart</span>
+  <a href="cart.html" class="view-cart">View Cart</a>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+  const variants = {
+    starter: { id: 'starter', name: 'Starter Kit', price: 129, short: 'Six hexagon scent pods for one room. Safe for unsupervised use.', subtitle: '6 pods' },
+    explorer: { id: 'explorer', name: 'Explorer Kit', price: 189, short: 'Ten scent pods for multi-room homes. Best spread across the whole home.', subtitle: '10 pods' },
+  };
+  let state = {
+    variant: 'starter',
+    qty: 1,
+    expansion: false,
+    scent: false,
+    scentName: 'Citrus Meadow',
+  };
+
+  const els = {
+    title: document.getElementById('prod-title'),
+    short: document.getElementById('prod-short'),
+    priceWhole: document.getElementById('price-whole'),
+    variantOpts: document.getElementById('variant-options'),
+    addExpansion: document.getElementById('add-expansion'),
+    addScent: document.getElementById('add-scent'),
+    scentSelect: document.getElementById('scent-select'),
+    qtyMinus: document.getElementById('qty-minus'),
+    qtyPlus: document.getElementById('qty-plus'),
+    qtyVal: document.getElementById('prod-qty-val'),
+    addBtn: document.getElementById('btn-add-to-cart'),
+    toast: document.getElementById('add-toast'),
+  };
+
+  const imgs = document.querySelectorAll('.product-main img, .product-main .placeholder-shown');
+  const mainImg = document.getElementById('main-img');
+  const mainPlaceholder = document.querySelector('.product-main .placeholder-shown');
+  const thumbs = document.querySelectorAll('.product-thumb');
+  const prevBtn = document.querySelector('.gallery-arrow.prev');
+  const nextBtn = document.querySelector('.gallery-arrow.next');
+  let current = 0;
+
+  function render(){
+    const v = variants[state.variant];
+    els.title.textContent = v.name;
+    els.short.textContent = v.short;
+    els.priceWhole.textContent = v.price;
+    // update variant option visual state
+    els.variantOpts.querySelectorAll('label').forEach((lab)=>{
+      lab.classList.toggle('has-border', lab.querySelector('input').value === state.variant);
+    });
+    // quantity buttons
+    els.qtyMinus.disabled = state.qty <= 1;
+    els.qtyPlus.disabled = state.qty >= 10;
+    els.qtyVal.textContent = state.qty;
+    // scent dropdown enabled only if scent addon checked
+    els.scentSelect.disabled = !state.scent;
+    // recompute total line? price shown is unit price only per requirement
+  }
+  render();
+
+  // Variant
+  els.variantOpts.addEventListener('change', (e)=>{
+    if(e.target.name === 'variant'){
+      state.variant = e.target.value;
+      render();
+    }
+  });
+
+  // Add-ons
+  els.addExpansion.addEventListener('change', (e)=>{ state.expansion = e.target.checked; });
+  els.addScent.addEventListener('change', (e)=>{
+    state.scent = e.target.checked;
+    els.scentSelect.disabled = !state.scent;
+    render();
+  });
+  els.scentSelect.addEventListener('change', (e)=>{ state.scentName = e.target.options[e.target.selectedIndex].text; });
+
+  // Quantity
+  els.qtyMinus.addEventListener('click', ()=>{ if(state.qty>1){ state.qty--; render(); } });
+  els.qtyPlus.addEventListener('click', ()=>{ if(state.qty<10){ state.qty++; render(); } });
+
+  // Gallery
+  function showImage(idx){
+    current = (idx + thumbs.length) % thumbs.length;
+    thumbs.forEach((t, i)=>{
+      t.setAttribute('aria-pressed', i === current);
+      t.setAttribute('tabindex', i === current ? '0' : '-1');
+    });
+    const src = thumbs[current].dataset.src;
+    const alt = thumbs[current].dataset.alt;
+    if(mainImg){ mainImg.style.display = 'none'; mainImg.src = src; mainImg.alt = alt; }
+    if(mainPlaceholder){ mainPlaceholder.style.display = src ? 'none' : 'grid'; }
+    if(src){ mainImg.style.display = 'block'; mainImg.onload = ()=>{ mainPlaceholder.style.display='none'; mainImg.style.display='block'; }; }
+  }
+  thumbs.forEach((t, i)=>{
+    t.addEventListener('click', ()=>{ current = i; showImage(current); });
+    t.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); current = i; showImage(current); }
+    });
+  });
+  prevBtn.addEventListener('click', ()=>{ showImage(current - 1); });
+  nextBtn.addEventListener('click', ()=>{ showImage(current + 1); });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowLeft'){ showImage(current - 1); }
+    if(e.key === 'ArrowRight'){ showImage(current + 1); }
+  });
+
+  // Toast
+  function showToast(){
+    els.toast.classList.add('show');
+    setTimeout(()=>{ els.toast.classList.remove('show'); }, 2000);
+  }
+
+  // Add to cart
+  els.addBtn.addEventListener('click', ()=>{
+    const v = variants[state.variant];
+    // add kit
+    window.sniffCart.add(v.id, v.name + ' (' + v.subtitle + ')', v.price, state.qty);
+    // add expansion
+    if(state.expansion){ window.sniffCart.add('expansion', 'Expansion Pack (3 pods)', 59, 1); }
+    // add scent
+    if(state.scent){ window.sniffCart.add('scent-refill', 'Scent Refill Pack &#8212; ' + state.scentName + ' (3 wicks)', 14, 1); }
+    // update header badge count
+    document.querySelectorAll('.cart-badge').forEach(el=>{ el.textContent = window.sniffCart.count(); });
+    document.querySelectorAll('.mobile-cart-count').forEach(el=>{ el.textContent = window.sniffCart.count(); });
+    showToast();
+  });
+})();
+</script>
+</body>
+</html>
