@@ -382,7 +382,13 @@ function openRandom() {
   const podLabel = pick.textContent.trim();
   logTime('Pod ' + podLabel + ' opened &mdash; sniff it out');
   announce('Pod ' + podLabel + ' has opened');
-  setTimeout(() => { pick.classList.remove('opens'); openPod = null; }, 3000);
+  setTimeout(() => {
+    if (!paused && found < 6 && pick.classList.contains('opens') && !pick.classList.contains('found')) {
+      findPod(pick);
+    }
+    pick.classList.remove('opens');
+    openPod = null;
+  }, 3500);
 }
 
 function shuffle() {
@@ -391,7 +397,7 @@ function shuffle() {
   podEls.forEach(el => {
     let pos;
     do {
-      pos = { top: 12 + Math.floor(Math.random() * 78), left: 10 + Math.floor(Math.random() * 82) };
+      pos = { top: 12 + Math.floor(Math.random() * 70), left: 10 + Math.floor(Math.random() * 70) };
     } while (used.some(u => Math.abs(u.top - pos.top) < 14 && Math.abs(u.left - pos.left) < 14));
     used.push(pos);
     el.style.top = pos.top + '%';

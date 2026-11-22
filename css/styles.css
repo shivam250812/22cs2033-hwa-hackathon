@@ -112,10 +112,10 @@ section { padding: 56px 20px; }
 /* Hunt demo */
 .hunt-demo { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; max-width: 700px; margin: 0 auto; text-align: center; }
 .floor-plan { position: relative; width: 100%; max-width: 460px; height: 320px; margin: 0 auto 18px; border: 3px solid var(--brand); border-radius: 14px; background: #f4efe4; overflow: hidden; }
-.floor-label { position: absolute; font-size: 0.72rem; font-weight: 700; color: var(--brand-dark); text-transform: uppercase; letter-spacing: 0.6px; }
-.floor-living { top: 10px; left: 12%; }
-.floor-kitchen { top: 10px; right: 12%; }
-.floor-bedroom { bottom: 14px; left: 42%; }
+.floor-label { position: absolute; font-size: 0.72rem; font-weight: 700; color: var(--brand-dark); text-transform: uppercase; letter-spacing: 0.6px; white-space: nowrap; }
+.floor-living { top: 10px; left: 8%; }
+.floor-kitchen { top: 10px; right: 8%; }
+.floor-bedroom { bottom: 14px; left: 50%; transform: translateX(-50%); }
 .pod { position: absolute; width: 44px; height: 44px; border-radius: 50%; background: #d4e4d7; border: 3px solid var(--brand); cursor: pointer; transition: transform 0.2s; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--brand-dark); user-select: none; }
 .pod:hover { transform: scale(1.12); }
 .pod.opens { animation: pulse-open 1.6s infinite; }

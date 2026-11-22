@@ -56,7 +56,6 @@
       <p>Review your pre-order before checkout.</p>
     </div>
     <div class="cart-empty" id="cart-empty" style="display:none;">
-      <div class="image-placeholder">cart-empty</div>
       <p>Your cart is empty.</p>
       <a href="product.html" class="btn btn-primary">Continue Shopping</a>
     </div>
@@ -77,6 +76,26 @@
         <button id="btn-checkout" class="btn btn-primary btn-block">Checkout</button>
         <p id="checkout-msg" class="form-msg" style="min-height:1.3em;"></p>
       </div>
+    </div>
+    <div id="checkout-form-section" style="display:none; margin-top:32px;">
+      <h3>Shipping Details</h3>
+      <form id="checkout-form" class="form-grid" novalidate>
+        <div class="form-group">
+          <label for="checkout-name">Full Name</label>
+          <input type="text" id="checkout-name" name="name" required aria-required="true">
+        </div>
+        <div class="form-group">
+          <label for="checkout-email">Email</label>
+          <input type="email" id="checkout-email" name="email" required aria-required="true">
+        </div>
+        <div class="form-group">
+          <label for="checkout-address">Delivery Address</label>
+          <textarea id="checkout-address" name="address" rows="3" required aria-required="true" placeholder="Street, City, State, ZIP"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="btn-place-order">Place Order</button>
+        <button type="button" class="btn btn-outline btn-block" id="btn-cancel-checkout" style="margin-top:8px;">Cancel</button>
+        <p id="checkout-form-msg" class="form-msg" style="min-height:1.3em;"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -122,14 +141,49 @@ const couponInput = document.getElementById('coupon-input');
 const couponBtn = document.getElementById('coupon-apply');
 const couponMsg = document.getElementById('coupon-msg');
 renderCartPage();
+
 const btnCheckout = document.getElementById('btn-checkout');
-const checkoutMsg = document.getElementById('checkout-msg');
+const checkoutFormSection = document.getElementById('checkout-form-section');
+const checkoutForm = document.getElementById('checkout-form');
+const btnCancelCheckout = document.getElementById('btn-cancel-checkout');
+const btnPlaceOrder = document.getElementById('btn-place-order');
+const checkoutFormMsg = document.getElementById('checkout-form-msg');
+
 if (btnCheckout) {
-  btnCheckout.addEventListener('click', async ()=>{
+  btnCheckout.addEventListener('click', () => {
     if (window.sniffCart.count() === 0) return;
-    btnCheckout.disabled = true;
-    btnCheckout.textContent = 'Processing...';
-    if (checkoutMsg) { checkoutMsg.textContent = ''; checkoutMsg.className = 'form-msg'; }
+    btnCheckout.style.display = 'none';
+    checkoutFormSection.style.display = 'block';
+  });
+}
+if (btnCancelCheckout) {
+  btnCancelCheckout.addEventListener('click', () => {
+    checkoutFormSection.style.display = 'none';
+    btnCheckout.style.display = 'block';
+    if (checkoutFormMsg) { checkoutFormMsg.textContent = ''; checkoutFormMsg.className = 'form-msg'; }
+    checkoutForm.reset();
+  });
+}
+if (checkoutForm) {
+  checkoutForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = checkoutForm.elements['name'].value.trim();
+    const email = checkoutForm.elements['email'].value.trim();
+    const address = checkoutForm.elements['address'].value.trim();
+    if (!name || !email || !address) {
+      checkoutFormMsg.textContent = 'Please fill in all fields.';
+      checkoutFormMsg.className = 'form-msg error';
+      return;
+    }
+    if (!email.includes('@')) {
+      checkoutFormMsg.textContent = 'Please enter a valid email.';
+      checkoutFormMsg.className = 'form-msg error';
+      return;
+    }
+    btnPlaceOrder.disabled = true;
+    btnPlaceOrder.textContent = 'Placing Order...';
+    checkoutFormMsg.textContent = '';
+    checkoutFormMsg.className = 'form-msg';
     const cart = window.sniffCart.get();
     const total = document.getElementById('cart-total').textContent;
     try {
@@ -139,23 +193,32 @@ if (btnCheckout) {
         body: JSON.stringify({
           items: cart.map(i => ({ id: i.id, name: i.name, price: i.price, qty: i.qty, meta: i.meta })),
           total: total.replace('$', ''),
-          email: 'test@example.com'
+          email,
+          name,
+          address
         })
       });
       const data = await res.json();
       if (data.success) {
-        if (checkoutMsg) { checkoutMsg.innerHTML = 'Order placed! Order ID: <strong>' + data.orderId + '</strong>. ' + data.message; checkoutMsg.className = 'form-msg success'; }
+        checkoutFormMsg.innerHTML = 'Order placed! Order ID: <strong>' + data.orderId + '</strong>. ' + data.message;
+        checkoutFormMsg.className = 'form-msg success';
         window.sniffCart.clearCoupon();
         localStorage.removeItem('sniff_cart_v1');
-        setTimeout(() => renderCartPage(), 2000);
+        setTimeout(() => {
+          checkoutFormSection.style.display = 'none';
+          btnCheckout.style.display = 'block';
+          renderCartPage();
+        }, 2500);
       } else {
-        if (checkoutMsg) { checkoutMsg.textContent = 'Order failed: ' + (data.error || 'Unknown error'); checkoutMsg.className = 'form-msg error'; }
+        checkoutFormMsg.textContent = 'Order failed: ' + (data.error || 'Unknown error');
+        checkoutFormMsg.className = 'form-msg error';
       }
-    } catch (e) {
-      if (checkoutMsg) { checkoutMsg.textContent = 'Order failed: ' + e.message; checkoutMsg.className = 'form-msg error'; }
+    } catch (err) {
+      checkoutFormMsg.textContent = 'Order failed: ' + err.message;
+      checkoutFormMsg.className = 'form-msg error';
     } finally {
-      btnCheckout.disabled = false;
-      btnCheckout.textContent = 'Checkout';
+      btnPlaceOrder.disabled = false;
+      btnPlaceOrder.textContent = 'Place Order';
     }
   });
 }
