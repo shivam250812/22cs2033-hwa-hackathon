@@ -361,7 +361,8 @@
     if(state.expansion){ window.sniffCart.add('expansion', 'Expansion Pack', 59, 1, { variant: '3 pods' }); }
     // add scent
     if(state.scent){
-      const scentId = 'scent-' + state.scentName.toLowerCase().replace(' ', '-');
+      const scentValue = els.scentSelect.value; // citrus, chicken, peanut
+      const scentId = 'scent-' + scentValue;
       window.sniffCart.add(scentId, 'Scent Refill Pack', 14, 1, { variant: state.scentName + ' (3 wicks)' });
     }
     // update header badge count

@@ -79,8 +79,6 @@ function renderCartPage() {
   const list = document.getElementById('cart-items-list');
   const empty = document.getElementById('cart-empty');
   const summary = document.getElementById('cart-summary');
-  const checkoutForm = document.getElementById('checkout-form');
-  const checkoutMsg = document.getElementById('checkout-msg');
   const couponInput = document.getElementById('coupon-input');
   const couponBtn = document.getElementById('coupon-apply');
   const couponMsg = document.getElementById('coupon-msg');
@@ -107,12 +105,10 @@ function renderCartPage() {
   if (cart.length === 0) {
     if (empty) empty.style.display = 'block';
     if (summary) summary.style.display = 'none';
-    if (checkoutForm) checkoutForm.style.display = 'none';
     return;
   }
   if (empty) empty.style.display = 'none';
   if (summary) summary.style.display = 'block';
-  if (checkoutForm) checkoutForm.style.display = 'block';
 
   cart.forEach(item => {
     const el = document.createElement('div');
@@ -142,7 +138,6 @@ function renderCartPage() {
   const btnCheckout = document.getElementById('btn-checkout');
   if (btnCheckout) {
     btnCheckout.disabled = cart.length === 0;
-    btnCheckout.onclick = () => { if (cart.length) { location.href = 'cart.html'; } };
   }
 
   list.querySelectorAll('.qty-btn').forEach(btn => {
@@ -159,7 +154,9 @@ function renderProductGrid(containerId) {
   container.innerHTML = PRODUCTS.map(p => `
     <div class="product-card${p.featured ? ' product-featured' : ''}">
       ${p.featured ? '<div class="product-badge">Best for multi-room</div>' : ''}
-      <div class="image-placeholder">${escapeHtml(p.id)}</div>
+      <div class="image-placeholder" style="width:130px;height:130px;margin:0 auto 14px;border-radius:8px;overflow:hidden;background:#f4efe4;">
+        ${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}" style="width:100%;height:100%;object-fit:cover;">` : escapeHtml(p.id)}
+      </div>
       <h3>${escapeHtml(p.name)}</h3>
       <div class="subtitle">${escapeHtml(p.subtitle)}</div>
       <div class="price">${formatMoney(p.price)}</div>
