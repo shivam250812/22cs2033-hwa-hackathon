@@ -97,6 +97,7 @@
         <p id="checkout-form-msg" class="form-msg" style="min-height:1.3em;"></p>
       </form>
     </div>
+    <p id="checkout-success-msg" class="form-msg" style="min-height:1.3em; display:none;"></p>
   </div>
 </section>
 </main>
@@ -148,12 +149,14 @@ const checkoutForm = document.getElementById('checkout-form');
 const btnCancelCheckout = document.getElementById('btn-cancel-checkout');
 const btnPlaceOrder = document.getElementById('btn-place-order');
 const checkoutFormMsg = document.getElementById('checkout-form-msg');
+const checkoutSuccessMsg = document.getElementById('checkout-success-msg');
 
 if (btnCheckout) {
   btnCheckout.addEventListener('click', () => {
     if (window.sniffCart.count() === 0) return;
     btnCheckout.style.display = 'none';
     checkoutFormSection.style.display = 'block';
+    if (checkoutSuccessMsg) { checkoutSuccessMsg.style.display = 'none'; checkoutSuccessMsg.textContent = ''; }
   });
 }
 if (btnCancelCheckout) {
@@ -200,15 +203,15 @@ if (checkoutForm) {
       });
       const data = await res.json();
       if (data.success) {
-        checkoutFormMsg.innerHTML = 'Order placed! Order ID: <strong>' + data.orderId + '</strong>. ' + data.message;
-        checkoutFormMsg.className = 'form-msg success';
-        window.sniffCart.clearCoupon();
-        localStorage.removeItem('sniff_cart_v1');
-        setTimeout(() => {
-          checkoutFormSection.style.display = 'none';
-          btnCheckout.style.display = 'block';
-          renderCartPage();
-        }, 2500);
+        checkoutFormSection.style.display = 'none';
+        btnCheckout.style.display = 'block';
+        if (checkoutSuccessMsg) {
+          checkoutSuccessMsg.innerHTML = 'Order placed! Order ID: <strong>' + data.orderId + '</strong>. ' + data.message;
+          checkoutSuccessMsg.className = 'form-msg success';
+          checkoutSuccessMsg.style.display = 'block';
+        }
+        window.sniffCart.clear();
+        renderCartPage();
       } else {
         checkoutFormMsg.textContent = 'Order failed: ' + (data.error || 'Unknown error');
         checkoutFormMsg.className = 'form-msg error';

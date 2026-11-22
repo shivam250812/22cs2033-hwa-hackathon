@@ -236,6 +236,14 @@ window.sniffCart = {
   clearCoupon() {
     clearCoupon();
   },
+  clear() {
+    cart = [];
+    appliedCoupon = null;
+    couponValid = null;
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    try { localStorage.removeItem(COUPON_KEY); } catch (e) {}
+    updateBadge();
+  },
   renderCartPage() {
     renderCartPage();
   },
