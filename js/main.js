@@ -1,10 +1,10 @@
 const PRODUCTS = [
-  { id: 'starter', name: 'Starter Kit', subtitle: '6 pods', price: 129, type: 'kit', desc: 'Perfect for one room. Six hexagon scent pods for dogs home alone.' },
-  { id: 'explorer', name: 'Explorer Kit', subtitle: '10 pods  best for multi-room homes', price: 189, type: 'kit', desc: 'Spread the hunt across your whole home. Ten scent pods.', featured: true },
-  { id: 'expansion', name: 'Expansion Pack', subtitle: '3 pods', price: 59, type: 'addon', desc: 'Add three more scent pods to any kit.' },
-  { id: 'scent-citrus', name: 'Scent Refill Pack', subtitle: 'Citrus Meadow  3 wicks (~3 months)', price: 14, type: 'addon', desc: 'Refillable scent wicks. Choose your scent.' },
-  { id: 'scent-chicken', name: 'Scent Refill Pack', subtitle: 'Roast Chicken  3 wicks (~3 months)', price: 14, type: 'addon', desc: 'Refillable scent wicks. Choose your scent.' },
-  { id: 'scent-peanut', name: 'Scent Refill Pack', subtitle: 'Peanut Butter  3 wicks (~3 months)', price: 14, type: 'addon', desc: 'Refillable scent wicks. Choose your scent.' }
+  { id: 'starter', name: 'Starter Kit', subtitle: '6 pods', price: 129, type: 'kit', desc: 'Perfect for one room. Six hexagon scent pods for dogs home alone.', image: 'images/product-main.png' },
+  { id: 'explorer', name: 'Explorer Kit', subtitle: '10 pods  best for multi-room homes', price: 189, type: 'kit', desc: 'Spread the hunt across your whole home. Ten scent pods.', featured: true, image: 'images/product-2.png' },
+  { id: 'expansion', name: 'Expansion Pack', subtitle: '3 pods', price: 59, type: 'addon', desc: 'Add three more scent pods to any kit.', image: 'images/expansion-pack.png' },
+  { id: 'scent-citrus', name: 'Scent Refill Pack', subtitle: 'Citrus Meadow  3 wicks (~3 months)', price: 14, type: 'addon', desc: 'Refillable scent wicks. Choose your scent.', image: 'images/scent-pack.png' },
+  { id: 'scent-chicken', name: 'Scent Refill Pack', subtitle: 'Roast Chicken  3 wicks (~3 months)', price: 14, type: 'addon', desc: 'Refillable scent wicks. Choose your scent.', image: 'images/scent-pack.png' },
+  { id: 'scent-peanut', name: 'Scent Refill Pack', subtitle: 'Peanut Butter  3 wicks (~3 months)', price: 14, type: 'addon', desc: 'Refillable scent wicks. Choose your scent.', image: 'images/scent-pack.png' }
 ];
 
 const STATUS_TEXT = 'Pre-order  Ships February 2027';
@@ -119,8 +119,11 @@ function renderCartPage() {
     el.className = 'cart-item';
     const metaText = item.meta && item.meta.variant ? escapeHtml(item.meta.variant) : '';
     const lineTotal = item.price * (item.qty || 1);
+    const product = PRODUCTS.find(p => p.id === item.id);
+    const imgSrc = product ? product.image : '';
+    const imgHtml = imgSrc ? `<img src="${imgSrc}" alt="${escapeHtml(item.name)}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">` : `<div class="image-placeholder">${escapeHtml(item.id)}</div>`;
     el.innerHTML = `
-      <div class="image-placeholder">${escapeHtml(item.id)}</div>
+      <div class="image-placeholder" style="width:64px;height:64px;border-radius:8px;overflow:hidden;background:#f4efe4;">${imgHtml}</div>
       <div class="info">
         <div class="name">${escapeHtml(item.name)}</div>
         ${metaText ? '<div class="meta">' + metaText + '</div>' : ''}

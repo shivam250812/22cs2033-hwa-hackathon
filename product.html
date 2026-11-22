@@ -320,12 +320,17 @@
     thumbs.forEach((t, i)=>{
       t.setAttribute('aria-pressed', i === current);
       t.setAttribute('tabindex', i === current ? '0' : '-1');
+      t.classList.toggle('active', i === current);
     });
     const src = thumbs[current].dataset.src;
     const alt = thumbs[current].dataset.alt;
-    if(mainImg){ mainImg.style.display = 'none'; mainImg.src = src; mainImg.alt = alt; }
-    if(mainPlaceholder){ mainPlaceholder.style.display = src ? 'none' : 'grid'; }
-    if(src){ mainImg.style.display = 'block'; mainImg.onload = ()=>{ mainPlaceholder.style.display='none'; mainImg.style.display='block'; }; }
+    if(mainImg){
+      mainImg.src = src;
+      mainImg.alt = alt;
+      mainImg.style.display = 'block';
+      mainImg.onload = () => { if(mainPlaceholder) mainPlaceholder.style.display = 'none'; };
+    }
+    if(mainPlaceholder && !src) mainPlaceholder.style.display = 'grid';
   }
   thumbs.forEach((t, i)=>{
     t.addEventListener('click', ()=>{ current = i; showImage(current); });
@@ -339,6 +344,7 @@
     if(e.key === 'ArrowLeft'){ showImage(current - 1); }
     if(e.key === 'ArrowRight'){ showImage(current + 1); }
   });
+  showImage(0);
 
   // Toast
   function showToast(){
@@ -354,7 +360,10 @@
     // add expansion
     if(state.expansion){ window.sniffCart.add('expansion', 'Expansion Pack', 59, 1, { variant: '3 pods' }); }
     // add scent
-    if(state.scent){ window.sniffCart.add('scent-refill', 'Scent Refill Pack', 14, 1, { variant: state.scentName + ' (3 wicks)' }); }
+    if(state.scent){
+      const scentId = 'scent-' + state.scentName.toLowerCase().replace(' ', '-');
+      window.sniffCart.add(scentId, 'Scent Refill Pack', 14, 1, { variant: state.scentName + ' (3 wicks)' });
+    }
     // update header badge count
     document.querySelectorAll('.cart-badge').forEach(el=>{ el.textContent = window.sniffCart.count(); });
     document.querySelectorAll('.mobile-cart-count').forEach(el=>{ el.textContent = window.sniffCart.count(); });

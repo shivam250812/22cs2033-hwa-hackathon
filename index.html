@@ -362,6 +362,7 @@ function findPod(el) {
   el.classList.remove('opens');
   openPod = null;
   found += 1;
+  moveDog(el);
   updateFound();
   const rect = el.getBoundingClientRect();
   showRipple(rect.left + rect.width/2, rect.top + rect.height/2);
@@ -376,6 +377,7 @@ function openRandom() {
   const pick = unfound[Math.floor(Math.random() * unfound.length)];
   pick.classList.add('opens');
   openPod = pick.dataset.id;
+  moveDog(pick);
   logTime('Pod ' + openPod + ' opened sniff it out');
   announce('Pod ' + openPod + ' has opened');
   setTimeout(() => { pick.classList.remove('opens'); openPod = null; }, 3000);
@@ -394,6 +396,8 @@ function shuffle() {
     el.style.left = pos.left + '%';
   });
   positions = used.map((u, i) => ({ id: i + 1, top: u.top, left: u.left }));
+  const firstPod = document.querySelector('.pod');
+  if (firstPod) moveDog(firstPod);
   announce('Pods moved to new hiding spots');
 }
 
