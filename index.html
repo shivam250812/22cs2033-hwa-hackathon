@@ -52,8 +52,8 @@
 <section class="hero">
   <div class="container">
     <span class="status-chip">Pre-order &#8226; Ships February 2027</span>
-    <h1>Eight hours alone. One big Adventure.</h1>
-    <p class="tagline">"An all-day scent hunt for dogs home alone."</p>
+    <h1>Eight hours alone. One big adventure.</h1>
+    <p class="tagline">An all-day scent hunt for dogs home alone.</p>
     <p>SniffScape is a set of hexagon-shaped scent pods you place around your home. Each pod opens one at a time at random moments during the day, releasing a faint scent so your dog sniffs and patrols instead of chewing the furniture.</p>
     <div class="hero-actions">
       <a href="product.html" class="btn btn-primary">Pre-order now</a>
@@ -316,7 +316,7 @@ function initHunt() {
     el.classList.remove('opens', 'found');
     el.style.transition = 'top 0.6s ease, left 0.6s ease';
     el.addEventListener('click', () => {
-      if (openPod === el.dataset.id && !el.classList.contains('found')) findPod(el);
+      if (el.classList.contains('opens') && !el.classList.contains('found')) findPod(el);
     });
   });
   found = 0;
@@ -335,7 +335,7 @@ function timeString() {
 }
 
 function logTime(text) {
-  timetableEl.textContent = timeString() + ' &#8226; ' + text;
+  timetableEl.innerHTML = timeString() + ' &bull; ' + text;
 }
 
 function showRipple(x, y) {
@@ -366,8 +366,9 @@ function findPod(el) {
   updateFound();
   const rect = el.getBoundingClientRect();
   showRipple(rect.left + rect.width/2, rect.top + rect.height/2);
-  announce('Pod ' + el.dataset.id + ' found at ' + timeString());
-  logTime('Dog found pod ' + el.dataset.id);
+  const podLabel = el.textContent.trim();
+  announce('Pod ' + podLabel + ' found at ' + timeString());
+  logTime('Dog found pod ' + podLabel);
 }
 
 function openRandom() {
@@ -378,8 +379,9 @@ function openRandom() {
   pick.classList.add('opens');
   openPod = pick.dataset.id;
   moveDog(pick);
-  logTime('Pod ' + openPod + ' opened sniff it out');
-  announce('Pod ' + openPod + ' has opened');
+  const podLabel = pick.textContent.trim();
+  logTime('Pod ' + podLabel + ' opened &mdash; sniff it out');
+  announce('Pod ' + podLabel + ' has opened');
   setTimeout(() => { pick.classList.remove('opens'); openPod = null; }, 3000);
 }
 

@@ -75,6 +75,7 @@
         <div class="cart-total-row"><span>Total</span><span id="cart-total">$0.00</span></div>
         <p class="form-note">Pre-order ships February 2027.</p>
         <button id="btn-checkout" class="btn btn-primary btn-block">Checkout</button>
+        <p id="checkout-msg" class="form-msg" style="min-height:1.3em;"></p>
       </div>
     </div>
   </div>
@@ -122,11 +123,13 @@ const couponBtn = document.getElementById('coupon-apply');
 const couponMsg = document.getElementById('coupon-msg');
 renderCartPage();
 const btnCheckout = document.getElementById('btn-checkout');
+const checkoutMsg = document.getElementById('checkout-msg');
 if (btnCheckout) {
   btnCheckout.addEventListener('click', async ()=>{
     if (window.sniffCart.count() === 0) return;
     btnCheckout.disabled = true;
     btnCheckout.textContent = 'Processing...';
+    if (checkoutMsg) { checkoutMsg.textContent = ''; checkoutMsg.className = 'form-msg'; }
     const cart = window.sniffCart.get();
     const total = document.getElementById('cart-total').textContent;
     try {
@@ -141,15 +144,15 @@ if (btnCheckout) {
       });
       const data = await res.json();
       if (data.success) {
-        alert('Order placed! Order ID: ' + data.orderId + '\\n' + data.message);
+        if (checkoutMsg) { checkoutMsg.innerHTML = 'Order placed! Order ID: <strong>' + data.orderId + '</strong>. ' + data.message; checkoutMsg.className = 'form-msg success'; }
         window.sniffCart.clearCoupon();
         localStorage.removeItem('sniff_cart_v1');
-        renderCartPage();
+        setTimeout(() => renderCartPage(), 2000);
       } else {
-        alert('Order failed: ' + (data.error || 'Unknown error'));
+        if (checkoutMsg) { checkoutMsg.textContent = 'Order failed: ' + (data.error || 'Unknown error'); checkoutMsg.className = 'form-msg error'; }
       }
     } catch (e) {
-      alert('Order failed: ' + e.message);
+      if (checkoutMsg) { checkoutMsg.textContent = 'Order failed: ' + e.message; checkoutMsg.className = 'form-msg error'; }
     } finally {
       btnCheckout.disabled = false;
       btnCheckout.textContent = 'Checkout';
