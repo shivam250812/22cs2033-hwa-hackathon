@@ -432,7 +432,7 @@ td .no { color: var(--muted); }
 .legend-color.base { background: linear-gradient(135deg, #1a1a1a 0%, #444 100%); }
 .legend-text strong { display: block; color: var(--brand); margin-bottom: 4px; font-size: 0.95rem; }
 .legend-text span { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-.legend-text span strong { color: var(--error); display: inline; font-size: inherit; margin: 0; }
+.legend-text span strong { color: var(--brand); display: inline; font-size: inherit; margin: 0; font-weight: 700; }
 
 /* Day timeline */
 .day-timeline { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; max-width: 700px; margin: 0 auto; }
