@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Starter Kit — SniffScape scent pods</title>
+<meta property="og:title" content="SniffScape Starter Kit — Scent pods for dogs home alone">
+<meta property="og:description" content="Pre-order SniffScape. 6 or 10 hexagon pods. Ships February 2027.">
+<meta property="og:image" content="images/og-image.png">
+<meta property="og:type" content="website">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,28 +52,36 @@
 <section class="product">
   <div class="container">
     <div class="product-inner">
-      <div class="product-gallery">
-        <div class="product-main" aria-label="Main product image">
-          <img id="main-img" src="" alt="SniffScape Starter Kit scent pod">
-          <div class="placeholder-shown image-placeholder" style="width:100%;height:100%;">main-image</div>
-          <button class="gallery-arrow prev" aria-label="Previous image">&#10094;</button>
-          <button class="gallery-arrow next" aria-label="Next image">&#10095;</button>
+<div class="product-gallery">
+          <div class="product-main" aria-label="Main product image">
+            <img id="main-img" src="images/product-main.png" alt="SniffScape Starter Kit scent pod">
+            <div class="placeholder-shown image-placeholder" style="width:100%;height:100%;">main-image</div>
+            <button class="gallery-arrow prev" aria-label="Previous image">&#10094;</button>
+            <button class="gallery-arrow next" aria-label="Next image">&#10095;</button>
+          </div>
+          <div class="product-thumbs" aria-label="Thumbnail gallery">
+            <button class="product-thumb active" data-src="images/product-main.png" data-alt="SniffScape Starter Kit scent pod" aria-label="Image 1, selected" aria-pressed="true">
+              <img src="images/product-main.png" alt="SniffScape Starter Kit scent pod" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;">
+              <span class="placeholder-shown">thumb-1</span>
+            </button>
+            <button class="product-thumb" data-src="images/product-2.png" data-alt="SniffScape scent pod top view" aria-label="Image 2" aria-pressed="false">
+              <img src="images/product-2.png" alt="SniffScape scent pod top view" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;">
+              <span class="placeholder-shown">thumb-2</span>
+            </button>
+            <button class="product-thumb" data-src="images/product-3.png" data-alt="SniffScape pod in use" aria-label="Image 3" aria-pressed="false">
+              <img src="images/product-3.png" alt="SniffScape pod in use" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;">
+              <span class="placeholder-shown">thumb-3</span>
+            </button>
+            <button class="product-thumb" data-src="images/product-4.png" data-alt="SniffScape six pods" aria-label="Image 4" aria-pressed="false">
+              <img src="images/product-4.png" alt="SniffScape six pods" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;">
+              <span class="placeholder-shown">thumb-4</span>
+            </button>
+            <button class="product-thumb" data-src="images/product-5..png" data-alt="SniffScape pods lifestyle" aria-label="Image 5" aria-pressed="false">
+              <img src="images/product-5..png" alt="SniffScape pods lifestyle" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;">
+              <span class="placeholder-shown">thumb-5</span>
+            </button>
+          </div>
         </div>
-        <div class="product-thumbs" aria-label="Thumbnail gallery">
-          <button class="product-thumb active" data-src="" data-alt="SniffScape Starter Kit scent pod" aria-label="Image 1, selected" aria-pressed="true">
-            <span class="placeholder-shown">thumb-1</span>
-          </button>
-          <button class="product-thumb" data-src="" data-alt="SniffScape scent pod top view" aria-label="Image 2" aria-pressed="false">
-            <span class="placeholder-shown">thumb-2</span>
-          </button>
-          <button class="product-thumb" data-src="" data-alt="SniffScape pod in use" aria-label="Image 3" aria-pressed="false">
-            <span class="placeholder-shown">thumb-3</span>
-          </button>
-          <button class="product-thumb" data-src="" data-alt="SniffScape six pods" aria-label="Image 4" aria-pressed="false">
-            <span class="placeholder-shown">thumb-4</span>
-          </button>
-        </div>
-      </div>
 
       <div class="product-details">
         <div class="product-badge">Pre-order &#8226; Ships February 2027</div>
@@ -93,12 +105,14 @@
 
         <div class="addon-group">
           <label>Add-ons</label>
-          <div class="addon-row">
+          <div class="addon-row" style="gap:12px;align-items:center;">
+            <img src="images/expansion-pack.png" alt="Expansion pack" style="width:48px;height:48px;border-radius:8px;object-fit:cover;border:1px solid var(--line);">
             <input type="checkbox" id="add-expansion" value="expansion">
             <label for="add-expansion">Expansion pack (3 pods)</label>
             <span class="addon-price">+$59</span>
           </div>
-          <div class="addon-row">
+          <div class="addon-row" style="gap:12px;align-items:center;">
+            <img src="images/scent-pack.png" alt="Scent refill pack" style="width:48px;height:48px;border-radius:8px;object-fit:cover;border:1px solid var(--line);">
             <input type="checkbox" id="add-scent" value="scent">
             <label for="add-scent">Scent refill pack (3 wicks, ~3 months)</label>
             <select id="scent-select" class="scent-dropdown" disabled>
