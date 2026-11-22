@@ -117,7 +117,7 @@ function renderCartPage() {
     const lineTotal = item.price * (item.qty || 1);
     const product = PRODUCTS.find(p => p.id === item.id);
     const imgSrc = product ? product.image : '';
-    const imgHtml = imgSrc ? `<img src="${imgSrc}" alt="${escapeHtml(item.name)}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">` : `<div class="image-placeholder">${escapeHtml(item.id)}</div>`;
+    const imgHtml = imgSrc ? `<img src="${imgSrc}" alt="${escapeHtml(item.name)}" width="1408" height="768" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">` : `<div class="image-placeholder">${escapeHtml(item.id)}</div>`;
     el.innerHTML = `
       <div class="image-placeholder" style="width:64px;height:64px;border-radius:8px;overflow:hidden;background:#f4efe4;">${imgHtml}</div>
       <div class="info">
@@ -126,9 +126,9 @@ function renderCartPage() {
       </div>
       <div class="price-col"><span class="unit-price">${formatMoney(item.price)}</span><span class="line-total">${formatMoney(lineTotal)}</span></div>
       <div class="qty-row">
-        <button class="qty-btn" data-id="${escapeHtml(item.id)}" data-delta="-1">&#8722;</button>
+        <button class="qty-btn" data-id="${escapeHtml(item.id)}" data-delta="-1" aria-label="Decrease quantity">&#8722;</button>
         <span class="qty-val">${item.qty || 1}</span>
-        <button class="qty-btn" data-id="${escapeHtml(item.id)}" data-delta="1">&#43;</button>
+        <button class="qty-btn" data-id="${escapeHtml(item.id)}" data-delta="1" aria-label="Increase quantity">&#43;</button>
       </div>
       <button class="remove" data-id="${escapeHtml(item.id)}" aria-label="Remove">&#10005;</button>
     `;
@@ -155,7 +155,7 @@ function renderProductGrid(containerId) {
     <div class="product-card${p.featured ? ' product-featured' : ''}">
       ${p.featured ? '<div class="product-badge">Best for multi-room</div>' : ''}
       <div class="image-placeholder" style="width:130px;height:130px;margin:0 auto 14px;border-radius:8px;overflow:hidden;background:#f4efe4;">
-        ${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}" style="width:100%;height:100%;object-fit:cover;">` : escapeHtml(p.id)}
+        ${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}" width="1408" height="768" loading="lazy" style="width:100%;height:100%;object-fit:cover;">` : escapeHtml(p.id)}
       </div>
       <h3>${escapeHtml(p.name)}</h3>
       <div class="subtitle">${escapeHtml(p.subtitle)}</div>

@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SniffScape — An all-day scent hunt for dogs home alone.</title>
+<meta name="description" content="SniffScape — An all-day scent hunt for dogs home alone. Pre-order hexagon scent pods that open at random times. Ships February 2027.">
 <meta property="og:title" content="SniffScape — An all-day scent hunt for dogs home alone">
 <meta property="og:description" content="Pre-order SniffScape scent pods. Ships February 2027.">
 <meta property="og:image" content="images/og-image.png">
 <meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +61,7 @@
       <a href="product.html" class="btn btn-primary">Pre-order now</a>
       <a href="#how-it-works" class="btn btn-outline">See how it works</a>
     </div>
-    <img src="images/hero.png" alt="SniffScape pods in a home setting" style="max-width:100%;height:auto;border-radius:var(--radius);margin-top:32px;border:1px solid var(--line);">
+    <img src="images/hero.png" alt="SniffScape pods in a home setting" width="1408" height="768" loading="lazy" style="max-width:100%;height:auto;border-radius:var(--radius);margin-top:32px;border:1px solid var(--line);">
   </div>
 </section>
 
@@ -148,12 +150,290 @@
   </div>
 </section>
 
+<section class="pod-anatomy" id="pod-anatomy">
+  <div class="container">
+    <div class="section-head">
+      <h2>How a pod works</h2>
+      <p>Every component designed for safety and all-day engagement.</p>
+    </div>
+    <div class="anatomy-wrap">
+      <figure class="pod-cutaway" aria-label="Cutaway diagram of a SniffScape hexagon pod">
+        <svg viewBox="0 0 400 500" class="pod-svg" role="img" aria-labelledby="pod-title pod-desc">
+          <title id="pod-title">SniffScape Pod Cutaway</title>
+          <desc id="pod-desc">Cross-section of a hexagon scent pod showing all internal components</desc>
+          
+          <!-- Outer hexagon outline -->
+          <polygon class="pod-hex-outer" points="200,20 373,145 373,355 200,480 27,355 27,145" />
+          
+          <!-- Silicone grass top -->
+          <polygon class="pod-grass" points="200,35 360,130 360,330 200,445 40,330 40,130" />
+          <g class="grass-blades">
+            <line x1="200" y1="50" x2="195" y2="30" />
+            <line x1="210" y1="55" x2="208" y2="35" />
+            <line x1="190" y1="52" x2="185" y2="32" />
+            <line x1="220" y1="60" x2="218" y2="40" />
+            <line x1="180" y1="58" x2="175" y2="38" />
+            <line x1="230" y1="68" x2="228" y2="48" />
+            <line x1="170" y1="65" x2="165" y2="45" />
+            <line x1="240" y1="75" x2="238" y2="55" />
+            <line x1="160" y1="72" x2="155" y2="52" />
+            <line x1="200" y1="85" x2="195" y2="65" />
+            <line x1="210" y1="88" x2="208" y2="68" />
+            <line x1="190" y1="82" x2="185" y2="62" />
+            <line x1="170" y1="95" x2="165" y2="75" />
+            <line x1="230" y1="98" x2="228" y2="78" />
+          </g>
+          
+          <!-- Sliding lid -->
+          <rect class="pod-lid" x="80" y="130" width="240" height="40" rx="5" />
+          <line class="lid-motor" x1="200" y1="150" x2="200" y2="180" />
+          <circle class="motor-body" cx="200" cy="185" r="12" />
+          
+          <!-- Scent wick -->
+          <rect class="pod-wick" x="190" y="180" width="20" height="60" rx="3" />
+          <path class="wick-scent" d="M195,175 Q185,165 180,155 M200,175 Q200,160 200,145 M205,175 Q215,165 220,155" />
+          
+          <!-- Sealed kibble chamber -->
+          <rect class="pod-chamber" x="90" y="250" width="220" height="120" rx="8" />
+          <g class="kibble-pieces">
+            <ellipse cx="130" cy="300" rx="8" ry="5" />
+            <ellipse cx="160" cy="290" rx="7" ry="4" />
+            <ellipse cx="190" cy="310" rx="6" ry="5" />
+            <ellipse cx="220" cy="295" rx="7" ry="4" />
+            <ellipse cx="250" cy="305" rx="8" ry="5" />
+            <ellipse cx="280" cy="290" rx="7" ry="4" />
+            <ellipse cx="140" cy="330" rx="6" ry="4" />
+            <ellipse cx="200" cy="340" rx="7" ry="5" />
+            <ellipse cx="260" cy="330" rx="6" ry="4" />
+          </g>
+          
+          <!-- Bluetooth chip -->
+          <rect class="pod-bluetooth" x="90" y="380" width="80" height="30" rx="4" />
+          <text class="chip-label" x="130" y="400" text-anchor="middle">BLE</text>
+          
+          <!-- Rechargeable battery -->
+          <rect class="pod-battery" x="230" y="380" width="80" height="30" rx="4" />
+          <rect class="battery-level" x="235" y="385" width="60" height="20" rx="2" />
+          <text class="chip-label" x="270" y="400" text-anchor="middle">USB-C</text>
+          
+          <!-- Weighted non-slip base -->
+          <rect class="pod-base" x="70" y="420" width="260" height="30" rx="5" />
+          <path class="base-grip" d="M90,435 L90,445 M120,435 L120,445 M150,435 L150,445 M180,435 L180,445 M210,435 L210,445 M240,435 L240,445 M270,435 L270,445 M300,435 L300,445" />
+          
+          <!-- Lid lock indicator -->
+          <g class="lock-indicator" transform="translate(200, 160)">
+            <circle class="lock-ring" cx="0" cy="0" r="18" />
+            <path class="lock-body" d="M-8,0 L-8,-10 Q-8,-14 -4,-14 L4,-14 Q8,-14 8,-10 L8,0 Z M-4,-10 L-4,-4 L4,-4 L4,-10 Z" />
+          </g>
+        </svg>
+        <figcaption class="cutaway-caption">Tap or hover labels for details</figcaption>
+      </figure>
+      
+      <div class="anatomy-legend">
+        <div class="legend-item" data-target="pod-grass">
+          <span class="legend-color grass"></span>
+          <div class="legend-text">
+            <strong>Silicone "grass" top</strong>
+            <span>Food-grade, chew-proof silicone flaps. No fabric, no small parts — safe for unsupervised use.</span>
+          </div>
+        </div>
+        <div class="legend-item" data-target="pod-lid">
+          <span class="legend-color lid"></span>
+          <div class="legend-text">
+            <strong>Sliding lid with motor</strong>
+            <span>Precision gear motor slides the lid open at scheduled times. <strong>The lid locks shut until its scheduled time so a dog can't force it open early.</strong></span>
+          </div>
+        </div>
+        <div class="legend-item" data-target="pod-wick">
+          <span class="legend-color wick"></span>
+          <div class="legend-text">
+            <strong>Scent wick</strong>
+            <span>Refillable wick releases a faint scent when the lid opens. Lasts ~3 months per wick.</span>
+          </div>
+        </div>
+        <div class="legend-item" data-target="pod-chamber">
+          <span class="legend-color chamber"></span>
+          <div class="legend-text">
+            <strong>Sealed kibble chamber</strong>
+            <span>Holds up to ½ cup of your dog's daily kibble. Keeps food fresh and contained until opened.</span>
+          </div>
+        </div>
+        <div class="legend-item" data-target="pod-bluetooth">
+          <span class="legend-color bluetooth"></span>
+          <div class="legend-text">
+            <strong>Bluetooth chip</strong>
+            <span>Connects to the SniffScape app for scheduling and hunt monitoring.</span>
+          </div>
+        </div>
+        <div class="legend-item" data-target="pod-battery">
+          <span class="legend-color battery"></span>
+          <div class="legend-text">
+            <strong>Rechargeable battery (USB-C)</strong>
+            <span>~2 weeks per charge. Charges via USB-C port on the side.</span>
+          </div>
+        </div>
+        <div class="legend-item" data-target="pod-base">
+          <span class="legend-color base"></span>
+          <div class="legend-text">
+            <strong>Weighted non-slip base</strong>
+            <span>Dense weighted bottom with grip pads keeps the pod stable during enthusiastic sniffing.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="day-timeline" id="day-timeline">
+  <div class="container">
+    <div class="section-head">
+      <h2>A day with SniffScape</h2>
+      <p>Your dog&rsquo;s hunt unfolds across the whole day while you&rsquo;re away.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">9:00 AM</div>
+        <div class="timeline-content">
+          <h3>Owner leaves for work</h3>
+          <p>Hunt window starts. Pods are armed and waiting.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:40 AM</div>
+        <div class="timeline-content">
+          <h3>Pod A opens in the living room</h3>
+          <p>First scent released. Dog begins patrolling.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">12:15 PM</div>
+        <div class="timeline-content">
+          <h3>Pod C opens in the kitchen</h3>
+          <p>Dog follows scent trail to the kitchen.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">1:50 PM</div>
+        <div class="timeline-content">
+          <h3>Pod E opens</h3>
+          <p>Mid-day hunt continues. Dog stays engaged.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">3:30 PM</div>
+        <div class="timeline-content">
+          <h3>Pod B opens</h3>
+          <p>Afternoon sniff session in another room.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">4:45 PM</div>
+        <div class="timeline-content">
+          <h3>Pod F opens in the bedroom</h3>
+          <p>Final pod of the day. Hunt nearly complete.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">6:00 PM</div>
+        <div class="timeline-content">
+          <h3>Owner gets daily report</h3>
+          <p>App shows all pods found, hunt duration, and kibble consumed.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+    <div class="fresh-list">
+      <h3>Stays fresh week after week</h3>
+      <ul>
+        <li>Random timing every day &mdash; never the same sequence twice.</li>
+        <li>Move pods weekly &mdash; new hiding spots, new trails.</li>
+        <li>Swap scents &mdash; Citrus Meadow, Roast Chicken, or Peanut Butter refills.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="app-preview" id="app-preview">
+  <div class="container">
+    <div class="section-head">
+      <h2>App preview</h2>
+      <p>Schedule hunts and review daily reports from your phone.</p>
+    </div>
+    <div class="phone-frames">
+      <figure class="phone-frame">
+        <figcaption>Schedule screen</figcaption>
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen schedule-screen">
+            <div class="app-header">
+              <h4>Today&rsquo;s Hunt</h4>
+              <span class="app-status">Active</span>
+            </div>
+            <div class="schedule-form">
+              <label>Hunt window</label>
+              <div class="time-inputs">
+                <input type="time" value="09:00" />
+                <span>to</span>
+                <input type="time" value="18:00" />
+              </div>
+              <label>Pods active</label>
+              <div class="pod-toggles">
+                <label class="toggle"><input type="checkbox" checked /> Pod A</label>
+                <label class="toggle"><input type="checkbox" checked /> Pod B</label>
+                <label class="toggle"><input type="checkbox" checked /> Pod C</label>
+                <label class="toggle"><input type="checkbox" /> Pod D</label>
+                <label class="toggle"><input type="checkbox" /> Pod E</label>
+                <label class="toggle"><input type="checkbox" /> Pod F</label>
+              </div>
+              <button class="app-btn primary">Start hunt</button>
+            </div>
+          </div>
+          <div class="phone-home"></div>
+        </div>
+      </figure>
+      <figure class="phone-frame">
+        <figcaption>Daily report</figcaption>
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen report-screen">
+            <div class="app-header">
+              <h4>Daily Report</h4>
+              <span class="app-date">Today</span>
+            </div>
+            <div class="report-summary">
+              <div class="stat"><span class="stat-value">6/6</span><span class="stat-label">Pods found</span></div>
+              <div class="stat"><span class="stat-value">8h 12m</span><span class="stat-label">Hunt time</span></div>
+              <div class="stat"><span class="stat-value">1.2 cups</span><span class="stat-label">Kibble eaten</span></div>
+            </div>
+            <div class="report-log">
+              <div class="log-entry"><span class="log-time">10:42</span><span>Pod A found (Living room)</span></div>
+              <div class="log-entry"><span class="log-time">12:18</span><span>Pod C found (Kitchen)</span></div>
+              <div class="log-entry"><span class="log-time">13:55</span><span>Pod E found</span></div>
+              <div class="log-entry"><span class="log-time">15:33</span><span>Pod B found</span></div>
+              <div class="log-entry"><span class="log-time">16:47</span><span>Pod F found (Bedroom)</span></div>
+            </div>
+            <button class="app-btn secondary">View history</button>
+          </div>
+          <div class="phone-home"></div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="comparison" id="comparison">
   <div class="container">
     <div class="section-head">
       <h2>SniffScape vs the alternatives</h2>
       <p>Built around a dog&rsquo;s nose, not buttons and screens.</p>
     </div>
+    <p class="comparison-highlight">The only feeder that spreads your dog&rsquo;s daily food around your home and releases it at random times all day.</p>
     <div class="compare-wrap">
       <table>
         <thead>

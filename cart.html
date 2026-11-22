@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your cart — SniffScape</title>
+<meta name="description" content="Review your SniffScape pre-order cart. Manage items, apply coupons, and checkout. Ships February 2027.">
 <meta property="og:title" content="Your Cart — SniffScape">
 <meta property="og:description" content="Review your SniffScape pre-order. Ships February 2027.">
 <meta property="og:image" content="images/og-image.png">
 <meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +79,20 @@
         <p id="checkout-msg" class="form-msg" style="min-height:1.3em;"></p>
       </div>
     </div>
+    <div id="order-confirmation" class="order-confirmation" style="display:none; margin-top:32px;">
+      <div class="confirmation-header">
+        <svg class="confirmation-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--success)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <h3>Thanks for your pre-order!</h3>
+      </div>
+      <div class="confirmation-details">
+        <div class="confirmation-row"><span class="confirmation-label">Order ID</span><span id="confirm-order-id" class="confirmation-value"></span></div>
+        <div class="confirmation-row"><span class="confirmation-label">Customer</span><span id="confirm-customer" class="confirmation-value"></span></div>
+        <div class="confirmation-row"><span class="confirmation-label">Items</span><span id="confirm-items" class="confirmation-value"></span></div>
+        <div class="confirmation-row"><span class="confirmation-label">Total</span><span id="confirm-total" class="confirmation-value"></span></div>
+        <div class="confirmation-row"><span class="confirmation-label">Ships</span><span class="confirmation-value">February 2027</span></div>
+      </div>
+      <a href="index.html" class="btn btn-primary btn-block">Back to home</a>
+    </div>
     <div id="checkout-form-section" style="display:none; margin-top:32px;">
       <h3>Shipping Details</h3>
       <form id="checkout-form" class="form-grid" novalidate>
@@ -141,7 +157,6 @@
 const couponInput = document.getElementById('coupon-input');
 const couponBtn = document.getElementById('coupon-apply');
 const couponMsg = document.getElementById('coupon-msg');
-renderCartPage();
 
 const btnCheckout = document.getElementById('btn-checkout');
 const checkoutFormSection = document.getElementById('checkout-form-section');
@@ -150,6 +165,18 @@ const btnCancelCheckout = document.getElementById('btn-cancel-checkout');
 const btnPlaceOrder = document.getElementById('btn-place-order');
 const checkoutFormMsg = document.getElementById('checkout-form-msg');
 const checkoutSuccessMsg = document.getElementById('checkout-success-msg');
+const orderConfirmation = document.getElementById('order-confirmation');
+const confirmOrderId = document.getElementById('confirm-order-id');
+const confirmCustomer = document.getElementById('confirm-customer');
+const confirmItems = document.getElementById('confirm-items');
+const confirmTotal = document.getElementById('confirm-total');
+const cartItemsList = document.getElementById('cart-items-list');
+const cartSummary = document.getElementById('cart-summary');
+
+if (orderConfirmation) orderConfirmation.style.display = 'none';
+if (checkoutSuccessMsg) checkoutSuccessMsg.style.display = 'none';
+
+renderCartPage();
 
 if (btnCheckout) {
   btnCheckout.addEventListener('click', () => {
@@ -204,14 +231,19 @@ if (checkoutForm) {
       const data = await res.json();
       if (data.success) {
         checkoutFormSection.style.display = 'none';
-        btnCheckout.style.display = 'block';
-        if (checkoutSuccessMsg) {
-          checkoutSuccessMsg.innerHTML = 'Order placed! Order ID: <strong>' + data.orderId + '</strong>. ' + data.message;
-          checkoutSuccessMsg.className = 'form-msg success';
-          checkoutSuccessMsg.style.display = 'block';
+        btnCheckout.style.display = 'none';
+        cartItemsList.style.display = 'none';
+        cartSummary.style.display = 'none';
+        if (orderConfirmation) {
+          confirmOrderId.textContent = data.orderId;
+          confirmCustomer.textContent = name;
+          const cart = window.sniffCart.get();
+          confirmItems.textContent = cart.map(i => i.name + (i.qty > 1 ? ' x' + i.qty : '')).join(', ');
+          confirmTotal.textContent = total;
+          orderConfirmation.style.display = 'block';
         }
         window.sniffCart.clear();
-        renderCartPage();
+        updateBadge();
       } else {
         checkoutFormMsg.textContent = 'Order failed: ' + (data.error || 'Unknown error');
         checkoutFormMsg.className = 'form-msg error';
