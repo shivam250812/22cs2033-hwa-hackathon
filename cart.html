@@ -53,7 +53,7 @@
 <main>
 <section class="cart">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head" id="cart-section-head">
       <h2>Your cart</h2>
       <p>Review your pre-order before checkout.</p>
     </div>
@@ -172,6 +172,7 @@ const confirmItems = document.getElementById('confirm-items');
 const confirmTotal = document.getElementById('confirm-total');
 const cartItemsList = document.getElementById('cart-items-list');
 const cartSummary = document.getElementById('cart-summary');
+const cartSectionHead = document.getElementById('cart-section-head');
 
 if (orderConfirmation) orderConfirmation.style.display = 'none';
 if (checkoutSuccessMsg) checkoutSuccessMsg.style.display = 'none';
@@ -234,6 +235,7 @@ if (checkoutForm) {
         btnCheckout.style.display = 'none';
         cartItemsList.style.display = 'none';
         cartSummary.style.display = 'none';
+        if (cartSectionHead) cartSectionHead.style.display = 'none';
         if (orderConfirmation) {
           confirmOrderId.textContent = data.orderId;
           confirmCustomer.textContent = name;
