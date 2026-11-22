@@ -123,10 +123,37 @@ const couponMsg = document.getElementById('coupon-msg');
 renderCartPage();
 const btnCheckout = document.getElementById('btn-checkout');
 if (btnCheckout) {
-  btnCheckout.addEventListener('click', ()=>{
+  btnCheckout.addEventListener('click', async ()=>{
     if (window.sniffCart.count() === 0) return;
+    btnCheckout.disabled = true;
+    btnCheckout.textContent = 'Processing...';
+    const cart = window.sniffCart.get();
     const total = document.getElementById('cart-total').textContent;
-    alert('Proceeding to checkout for ' + total + '.\\n(This is a pre-order demo; orders ship February 2027.)');
+    try {
+      const res = await fetch('/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: cart.map(i => ({ id: i.id, name: i.name, price: i.price, qty: i.qty, meta: i.meta })),
+          total: total.replace('$', ''),
+          email: 'test@example.com'
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert('Order placed! Order ID: ' + data.orderId + '\\n' + data.message);
+        window.sniffCart.clearCoupon();
+        localStorage.removeItem('sniff_cart_v1');
+        renderCartPage();
+      } else {
+        alert('Order failed: ' + (data.error || 'Unknown error'));
+      }
+    } catch (e) {
+      alert('Order failed: ' + e.message);
+    } finally {
+      btnCheckout.disabled = false;
+      btnCheckout.textContent = 'Checkout';
+    }
   });
 }
 if (couponBtn) {
